@@ -14,6 +14,30 @@ class Pet(db.Model):
     weight = db.Column(db.Integer)
     age = db.Column(db.Integer)
 
+class Species(db.Model):
+    id = db.Column(db.Unicode, primary_key=True)
+    description = db.Column(db.Unicode)
+
+class Tracking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.DateTime)
+    latitude = db.Column(db.Integer)
+    longitude = db.Column(db.Integer)
+
+class Owner(db.Model):
+    id = db.Column(db.Unicode, primary_key=True)
+    name = db.Column(db.Unicode)
+
+class Advice(db.Model):
+    id = db.Column(db.Unicode, primary_key=True)
+    question = db.Column(db.Unicode)
+    answer = db.Column(db.Unicode)
+
 db.create_all()
 manager.create_api(Pet, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Species, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Tracking, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Owner, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Advice, methods=['GET', 'POST', 'DELETE'])
+petApp.debug = True
 petApp.run()
