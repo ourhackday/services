@@ -25,11 +25,11 @@ class Species(db.Model):
 class Tracking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pet = db.Column(db.Integer, db.ForeignKey('pet.id'))
-    time = db.Column(db.DateTime)
-    lat_start = db.Column(db.Integer)
-    long_start = db.Column(db.Integer)
-    lat_end = db.Column(db.Integer)
-    long_end = db.Column(db.Integer)
+    date = db.Column(db.DateTime)
+    lat_start = db.Column(db.Float)
+    long_start = db.Column(db.Float)
+    lat_end = db.Column(db.Float)
+    long_end = db.Column(db.Float)
     distance = db.Column(db.Float)
 
 class Owner(db.Model):
