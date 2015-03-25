@@ -42,3 +42,18 @@ allpets = [
 url_pets = 'http://localhost:5000/api/pet'
 for pet in allpets:
     requests.post(url_pets, pet, headers=headers)
+
+alladvice = [
+    '{"id": "1", "species": "Dog", "question": "Do I need to feed my dog ?",\
+    "answer": "Yes, scientific studies show that this will help your dog to live longer"}',
+    '{"id": "2", "species": "Dog", "question": "Is my dogs bark worse than its bite ?",\
+    "answer": "No.  Bites are worse than barks.  Far worse."}',
+    '{"id": "3", "species": "Cat", "question": "Why does my cat hate me ?",\
+    "answer": "It is in all cat DNA to treat humans with disdain.  Please do not feel bad about this."}',
+    '{"id": "4", "species": "Cat", "question": "Why does my cat leave half-eaten mice on my living room floor",\
+    "answer": "Two reasons: 1) Turned out to not be very hungry after all, 2) For the expression on your face"}'
+]
+
+url_advice = 'http://localhost:5000/api/advice'
+for advice in alladvice:
+    requests.post(url_advice, advice, headers=headers)
