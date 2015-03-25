@@ -23,6 +23,7 @@ $ . ./sandbox/bin/activate
 $ pip install flask
 $ pip install flask-restless
 $ pip install Flask-SQLAlchemy
+$ pip install requests 
 ``` 
 
 The code can be cloned and run straigh from git:

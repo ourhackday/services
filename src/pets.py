@@ -13,6 +13,9 @@ class Pet(db.Model):
     species = db.Column(db.Unicode)
     weight = db.Column(db.Integer)
     age = db.Column(db.Integer)
+    description = db.Column(db.Unicode)
+    favefood = db.Column(db.Unicode)
+    favetoy = db.Column(db.Unicode)
 
 class Species(db.Model):
     id = db.Column(db.Unicode, primary_key=True)
@@ -27,6 +30,9 @@ class Tracking(db.Model):
 class Owner(db.Model):
     id = db.Column(db.Unicode, primary_key=True)
     name = db.Column(db.Unicode)
+    town = db.Column(db.Unicode)
+    age = db.Column(db.Unicode)
+    gender = db.Column(db.Unicode)
 
 class Advice(db.Model):
     id = db.Column(db.Unicode, primary_key=True)
@@ -40,4 +46,4 @@ manager.create_api(Tracking, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Owner, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Advice, methods=['GET', 'POST', 'DELETE'])
 petApp.debug = True
-petApp.run()
+petApp.run(host="0.0.0.0", port=5000)
