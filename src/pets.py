@@ -9,8 +9,9 @@ manager = APIManager(petApp, flask_sqlalchemy_db=db)
 
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    species = db.Column(db.Unicode, db.ForeignKey('species.id'))
+    owner = db.Column(db.Integer, db.ForeignKey('owner.id'))
     name = db.Column(db.Unicode)
-    species = db.Column(db.Unicode)
     weight = db.Column(db.Integer)
     age = db.Column(db.Integer)
     description = db.Column(db.Unicode)
@@ -23,19 +24,23 @@ class Species(db.Model):
 
 class Tracking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    pet = db.Column(db.Integer, db.ForeignKey('pet.id'))
     time = db.Column(db.DateTime)
-    latitude = db.Column(db.Integer)
-    longitude = db.Column(db.Integer)
+    lat_start = db.Column(db.Integer)
+    long_start = db.Column(db.Integer)
+    lat_end = db.Column(db.Integer)
+    long_end = db.Column(db.Integer)
+    distance = db.Column(db.Float)
 
 class Owner(db.Model):
-    id = db.Column(db.Unicode, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode)
     town = db.Column(db.Unicode)
     age = db.Column(db.Unicode)
-    gender = db.Column(db.Unicode)
 
 class Advice(db.Model):
     id = db.Column(db.Unicode, primary_key=True)
+    species = db.Column(db.Unicode, db.ForeignKey('species.id'))
     question = db.Column(db.Unicode)
     answer = db.Column(db.Unicode)
 
